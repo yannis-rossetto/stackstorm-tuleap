@@ -1,3 +1,24 @@
 StackStorm connector for Tuleap
 ===============================
 
+This repository contains the first steps for a StackStorm pack for Tuleap
+
+
+How to test it ?
+----------------
+
+* clone the StackStorm docker repository: https://github.com/StackStorm/st2-docker
+* cd st2-docker
+* launch the StackStorm container: https://github.com/StackStorm/st2-docker/blob/master/README.md#usage
+* clone this repository: git clone https://github.com/yannis-rossetto/stackstorm-tuleap packs.dev/tuleap
+* docker exec -ti stackstorm bash
+* st2ctl reload
+* st2 action list
+
+
+What does this pack do ?
+------------------------
+
+For now, the available actions are:
+
+* get_projects
