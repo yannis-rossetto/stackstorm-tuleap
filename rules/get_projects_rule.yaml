@@ -1,0 +1,15 @@
+---
+name: "get_projects_rule"
+pack: "tuleap"
+description: "Listen a webhook to run get_projects action."
+enabled: true
+
+trigger:
+    type: "core.st2.webhook"
+    parameters:
+        url: "get_projects"
+
+action:
+    ref: "tuleap.get_projects"
+    parameters:
+        domain_name: "tuleap-web.tuleap-aio-dev.docker"
