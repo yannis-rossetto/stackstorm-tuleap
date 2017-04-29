@@ -1,2 +1,4 @@
 ---
 tuleap_domain_name: "tuleap-web.tuleap-aio-dev.docker"
+tuleap_username: ""
+tuleap_password: ""
