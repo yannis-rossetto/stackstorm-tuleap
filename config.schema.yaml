@@ -1,0 +1,5 @@
+---
+tuleap_domain_name:
+    description: "Tuleap domain name"
+    type: "string"
+    required: true

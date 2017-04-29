@@ -11,5 +11,3 @@ trigger:
 
 action:
     ref: "tuleap.get_projects"
-    parameters:
-        tuleap_domain_name: "tuleap-web.tuleap-aio-dev.docker"

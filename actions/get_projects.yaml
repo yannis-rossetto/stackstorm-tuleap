@@ -4,9 +4,3 @@ runner_type: "python-script"
 description: Retrieve information about Tuleap projects user can see.
 enabled: true
 entry_point: get_projects.py
-parameters:
-    tuleap_domain_name:
-        type: "string"
-        description: "The domain name, ex: tuleap-web.tuleap-aio-dev.docker"
-        required: true
-        position: 0
