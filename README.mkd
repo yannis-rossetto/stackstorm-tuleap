@@ -12,6 +12,7 @@ How to test it ?
 * launch the StackStorm container: https://github.com/StackStorm/st2-docker/blob/master/README.md#usage
 * clone this repository: git clone https://github.com/yannis-rossetto/stackstorm-tuleap packs.dev/tuleap
 * docker exec -ti stackstorm bash
+* cp /opt/stackstorm/packs.dev/tuleap/tuleap.yaml.example /opt/stackstorm/configs/tuleap.yaml
 * st2ctl reload
 * st2 action list
 
