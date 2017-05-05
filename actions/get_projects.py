@@ -1,16 +1,29 @@
 import sys
 import requests
+from Tuleap.RestClient.Connection import Connection
+from Tuleap.RestClient.Connection import CertificateVerification
+from Tuleap.RestClient.Projects import Projects
 from st2actions.runners.pythonrunner import Action
+
 
 class GetProjects(Action):
     def run(self):
         requests.packages.urllib3.disable_warnings()
 
-        tuleap_domain_name = self.config['tuleap_domain_name']
-        username = self.config['tuleap_username']
-        password = self.config['tuleap_password']
+        connection = Connection()
+        project_list = None
+        success = connection.login('https://'+self.config['tuleap_domain_name']+'/api/v1',
+                                   self.config['tuleap_username'],
+                                   self.config['tuleap_password'],
+                                   CertificateVerification.Disabled)
 
-        url = 'https://' + str(tuleap_domain_name) + '/api/v1/projects'
-        request_get_projects = requests.get(url, auth=(username, password), verify=False)
+        if success:
+            # Projects
+            projects = Projects(connection)
 
-        print(request_get_projects.text)
+            success = projects.request_project_list()
+
+            if success:
+                project_list = projects.get_data()
+
+        print(project_list)
