@@ -3,18 +3,27 @@ StackStorm connector for Tuleap
 
 This repository contains the first steps for a StackStorm pack for Tuleap
 
+How to install it ?
+-------------------
+
+In stackstorm:
+* Install the pack: `st2 pack install https://github.com/yannis-rossetto/stackstorm-tuleap` command
+* Configure the pack: `st2 pack config tuleap`
+* You can test it: `st2 run tuleap.get_projects`
+* You can see actions available: `st2 action list`
+
 
 How to test it ?
 ----------------
 
-* clone the StackStorm docker repository: https://github.com/StackStorm/st2-docker
-* cd st2-docker
-* launch the StackStorm container: https://github.com/StackStorm/st2-docker/blob/master/README.md#usage
-* clone this repository: git clone https://github.com/yannis-rossetto/stackstorm-tuleap packs.dev/tuleap
-* docker exec -ti stackstorm bash
-* cp /opt/stackstorm/packs.dev/tuleap/tuleap.yaml.example /opt/stackstorm/configs/tuleap.yaml
-* st2ctl reload
-* st2 action list
+* Clone the StackStorm docker repository: https://github.com/StackStorm/st2-docker
+* `cd st2-docker`
+* Launch the StackStorm container: https://github.com/StackStorm/st2-docker/blob/master/README.md#usage
+* Clone this repository: git clone https://github.com/yannis-rossetto/stackstorm-tuleap packs.dev/tuleap
+* `docker exec -ti stackstorm bash`
+* `cp /opt/stackstorm/packs.dev/tuleap/tuleap.yaml.example /opt/stackstorm/configs/tuleap.yaml`
+* `st2ctl reload`
+* `st2 action list`
 
 
 What does this pack do ?
