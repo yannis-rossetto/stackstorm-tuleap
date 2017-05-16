@@ -1,7 +1,6 @@
-import sys
 import requests
-from Tuleap.RestClient.Connection import Connection
 from Tuleap.RestClient.Connection import CertificateVerification
+from Tuleap.RestClient.Connection import Connection
 from Tuleap.RestClient.Projects import Projects
 from st2actions.runners.pythonrunner import Action
 
