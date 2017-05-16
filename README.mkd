@@ -9,7 +9,6 @@ How to install it ?
 In stackstorm:
 * Install the pack: `st2 pack install https://github.com/yannis-rossetto/stackstorm-tuleap` command
 * Configure the pack: `st2 pack config tuleap`
-* Apply modifications: `st2ctl reload`
 * You can test it: `st2 run tuleap.get_projects`
 * You can see actions available: `st2 action list`
 
