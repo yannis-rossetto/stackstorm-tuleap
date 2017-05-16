@@ -26,4 +26,6 @@ class GetProjects(Action):
             if success:
                 project_list = projects.get_data()
 
-        print(project_list)
+                return True, project_list
+
+        return False, project_list
