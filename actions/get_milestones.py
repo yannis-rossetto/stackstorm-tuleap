@@ -7,7 +7,7 @@ from st2actions.runners.pythonrunner import Action
 
 
 class GetMilestones(Action):
-    def run(self, project_id):
+    def run(self, project_id, order):
         requests.packages.urllib3.disable_warnings()
 
         connection = Connection()
@@ -21,7 +21,10 @@ class GetMilestones(Action):
             # Projects
             projects = Projects(connection)
 
-            success = projects.request_milestones(project_id, Order.Ascending)
+            if order == 'descending':
+                success = projects.request_milestones(project_id, Order.Descending)
+            else:
+                success = projects.request_milestones(project_id, Order.Ascending)
 
             if success:
                 milestones = projects.get_data()

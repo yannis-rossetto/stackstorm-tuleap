@@ -9,3 +9,9 @@ parameters:
         type: "string"
         description: "The project id"
         required: true
+        position: 0
+    order:
+        type: "string"
+        description: "ascending/descending to get milestones in ascending or descending order"
+        required: false
+        position: 1
