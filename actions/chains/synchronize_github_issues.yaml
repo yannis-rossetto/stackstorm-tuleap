@@ -9,7 +9,12 @@
             publish:
                 formated_results: "{
                     {% for result in  list_issues.result %}
-                        '{{ result.id }}': {'Summary': {'value': '{{ result.title }}' }},
+                        '{{ result.id }}': {
+                            'login':       {'value': '{{ result.author.login }}' },
+                            'name':        {'value': '{{ result.author.name }}' },
+                            'title':       {'value': '{{ result.title }}' },
+                            'description': {'value': '{{ result.body }}' }
+                        },
                     {% endfor %}
                 }"
             on-success: "create_artifacts"
