@@ -1,0 +1,29 @@
+---
+    chain:
+        -
+            name: "list_issues"
+            ref: "github.list_issues"
+            parameters:
+                repo: "{{ repo }}"
+                user: "{{ user }}"
+            publish:
+                formated_results: "{
+                    {% for result in  list_issues.result %}
+                        '{{ result.id }}': {'Summary': {'value': '{{ result.title }}' }},
+                    {% endfor %}
+                }"
+            on-success: "create_artifacts"
+            on-failure: "fail"
+        -
+            name: "create_artifacts"
+            ref: "tuleap.create_artifacts"
+            parameters:
+                tracker_id: "{{ tracker_id }}"
+                values_by_field_by_artifact: "{{ formated_results }}"
+            on-failure: "fail"
+        -
+            name: "fail"
+            ref: "core.local"
+            parameters:
+                cmd: "echo fail to synchronize_github_issues"
+    default: "list_issues"

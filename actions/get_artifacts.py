@@ -1,30 +1,30 @@
 import requests
 from Tuleap.RestClient.Connection import CertificateVerification
 from Tuleap.RestClient.Connection import Connection
-from Tuleap.RestClient.Projects import Projects
+from Tuleap.RestClient.Trackers import Tracker
 from st2actions.runners.pythonrunner import Action
 
 
-class GetProjects(Action):
-    def run(self):
+class GetArtifacts(Action):
+    def run(self, tracker_id):
         requests.packages.urllib3.disable_warnings()
 
         connection = Connection()
-        project_list = None
+        artifact_list = None
         success = connection.login('https://'+self.config['tuleap_domain_name']+'/api/v1',
                                    self.config['tuleap_username'],
                                    self.config['tuleap_password'],
                                    CertificateVerification.Disabled)
 
         if success:
-            # Projects
-            projects = Projects(connection)
+            # Tracker
+            trackers = Tracker(connection)
 
-            success = projects.request_project_list()
+            success = trackers.request_artifact_list(tracker_id)
 
             if success:
-                project_list = projects.get_data()
+                artifact_list = trackers.get_data()
 
-                return True, project_list
+                return True, artifact_list
 
-        return False, project_list
+        return False, artifact_list

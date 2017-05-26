@@ -1,0 +1,22 @@
+---
+# Action definition metadata
+name: "synchronize_github_issues"
+description: "Synchronisation of Github issues on Tuleap"
+
+# `runner_type` has value `action-chain` to identify that action is an ActionChain.
+runner_type: "action-chain"
+
+# `entry_point` path to the ActionChain definition file, relative to the pack's action directory.
+entry_point: "chains/synchronize_github_issues.yaml"
+
+enabled: true
+parameters:
+      repo:
+          type: "string"
+          required: true
+      user:
+          type: "string"
+          required: true
+      tracker_id:
+          type: "string"
+          required: true

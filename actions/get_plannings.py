@@ -5,13 +5,13 @@ from Tuleap.RestClient.Projects import Projects
 from st2actions.runners.pythonrunner import Action
 
 
-class GetProjects(Action):
-    def run(self):
+class GetPlannings(Action):
+    def run(self, project_id):
         requests.packages.urllib3.disable_warnings()
 
         connection = Connection()
-        project_list = None
-        success = connection.login('https://'+self.config['tuleap_domain_name']+'/api/v1',
+        plannings = None
+        success = connection.login('https://' + self.config['tuleap_domain_name'] + '/api/v1',
                                    self.config['tuleap_username'],
                                    self.config['tuleap_password'],
                                    CertificateVerification.Disabled)
@@ -20,11 +20,11 @@ class GetProjects(Action):
             # Projects
             projects = Projects(connection)
 
-            success = projects.request_project_list()
+            success = projects.request_plannings(project_id)
 
             if success:
-                project_list = projects.get_data()
+                plannings = projects.get_data()
 
-                return True, project_list
+                return True, plannings
 
-        return False, project_list
+        return False, plannings

@@ -2,15 +2,16 @@ import requests
 from Tuleap.RestClient.Connection import CertificateVerification
 from Tuleap.RestClient.Connection import Connection
 from Tuleap.RestClient.Projects import Projects
+from Tuleap.RestClient.Commons import GitFields
 from st2actions.runners.pythonrunner import Action
 
 
-class GetProjects(Action):
-    def run(self):
+class GetGitRepositories(Action):
+    def run(self, project_id, git_fields):
         requests.packages.urllib3.disable_warnings()
 
         connection = Connection()
-        project_list = None
+        git_repositories = None
         success = connection.login('https://'+self.config['tuleap_domain_name']+'/api/v1',
                                    self.config['tuleap_username'],
                                    self.config['tuleap_password'],
@@ -20,11 +21,14 @@ class GetProjects(Action):
             # Projects
             projects = Projects(connection)
 
-            success = projects.request_project_list()
+            if git_fields == 'all':
+                success = projects.request_git(project_id, GitFields.All)
+            else:
+                success = projects.request_git(project_id, GitFields.Basic)
 
             if success:
-                project_list = projects.get_data()
+                git_repositories = projects.get_data()
 
-                return True, project_list
+                return True, git_repositories
 
-        return False, project_list
+        return False, git_repositories
