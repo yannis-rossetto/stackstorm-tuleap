@@ -1,8 +1,8 @@
 import requests
+from Tuleap.RestClient.Commons import GitFields
 from Tuleap.RestClient.Connection import CertificateVerification
 from Tuleap.RestClient.Connection import Connection
 from Tuleap.RestClient.Projects import Projects
-from Tuleap.RestClient.Commons import GitFields
 from st2actions.runners.pythonrunner import Action
 
 
