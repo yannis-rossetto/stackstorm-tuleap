@@ -1,7 +1,7 @@
 import requests
+from Tuleap.RestClient.Artifacts import Artifacts
 from Tuleap.RestClient.Connection import CertificateVerification
 from Tuleap.RestClient.Connection import Connection
-from Tuleap.RestClient.Artifacts import Artifacts
 from st2actions.runners.pythonrunner import Action
 
 
